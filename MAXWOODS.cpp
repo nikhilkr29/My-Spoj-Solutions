@@ -72,13 +72,13 @@ void solve() {
 
   //Eg : For the given i/p :
               //T#T
-							//TTT
-							//T#T
+	      //TTT
+	      //T#T
 
   //The dp matrix looks like this : 
                   //3 0 5 
-								  //2 3 4 
-								  //1 0 1
+		  //2 3 4
+	          //1 0 1
   //Although there is 5 in the dp matrix but we dont care cause we only care what is at dp[1][1][1]
  //Kyuki ek valid path se (1,1) se srt krke jo mile whi hmara ans hoga
 
