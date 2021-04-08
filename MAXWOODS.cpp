@@ -51,18 +51,41 @@ void solve() {
   for (ll i = n; i >= 1; i--) {
 
     //0 is for left
-    for (ll j = 1; j <= m; j++) {
-      if (a[i][j])
-        dp[i][j][0] = max(dp[i + 1][j][1], dp[i][j - 1][0]) + (a[i][j] - 1);
+    if (i % 2 == 0) {
+      for (ll j = 1; j <= m; j++) {
+        if (a[i][j])
+          dp[i][j][0] = max(dp[i + 1][j][1], dp[i][j - 1][0]) + (a[i][j] - 1);
+      }
     }
-
-    //1 is for right
-    for (ll j = m; j >= 1; j--) {
-      if (a[i][j])
-        dp[i][j][1] = max(dp[i + 1][j][0], dp[i][j + 1][1]) + (a[i][j] - 1);
+    else {
+      //1 is for right
+      for (ll j = m; j >= 1; j--) {
+        if (a[i][j])
+          dp[i][j][1] = max(dp[i + 1][j][0], dp[i][j + 1][1]) + (a[i][j] - 1);
+      }
     }
   }
+  
+  //Kahi pr koi value ho humme toh matlab hai first point pr kya value aaya sab 
+  //Chalane k baad woh bhi right face krte hue islie code simple hai or isme bht edge
+  //Case consider ni krna pra agr dp[1][1][1] pr jo aaya hoga whi max rhega hmare lie
+
+  //Eg : For the given i/p :
+              //T#T
+							//TTT
+							//T#T
+
+  //The dp matrix looks like this : 
+                  //3 0 5 
+								  //2 3 4 
+								  //1 0 1
+  //Although there is 5 in the dp matrix but we dont care cause we only care what is at dp[1][1][1]
+ //Kyuki ek valid path se (1,1) se srt krke jo mile whi hmara ans hoga
+
+   
+  
   cout << dp[1][1][1] << "\n";
+
 
 
 
